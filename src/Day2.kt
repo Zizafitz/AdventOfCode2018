@@ -1,7 +1,7 @@
-class Day1: Day {
+class Day2: Day {
 	constructor() : super()
 
 	override fun show() {
-		println("December 1:")
+		println("December 2:")
 	}
 }
