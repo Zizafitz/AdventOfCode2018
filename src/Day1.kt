@@ -1,5 +1,6 @@
 import java.io.BufferedReader
 import java.io.File
+import java.util.*
 import kotlin.test.assertEquals
 
 /**
@@ -77,15 +78,13 @@ class Day1: Day {
 	}
 
 	private fun subQuestion2(lineList: MutableList<Int>): Int {
-		var i = 0
 		var freq = 0
 		val seen = mutableSetOf(0)
 		while (true) {
-			freq += lineList[i]
+			freq += lineList[0]
+			Collections.rotate(lineList,-1)
 			if (seen.contains(freq)) break
 			seen.add(freq)
-			if (i == lineList.count() -1 ) i = 0
-			else i++
 		}
 		return freq
 	}
@@ -101,14 +100,18 @@ class Day1: Day {
 		subQuestion1(mutableListOf(+1, +1, +1)) `should equal` (3)
 		subQuestion1(mutableListOf(+1, +1, -2)) `should equal` (0)
 		subQuestion1(mutableListOf(-1, -2, -3)) `should equal` (-6)
-		println("Answer part 1: " + subQuestion1(lineList))
+		val s1 = System.currentTimeMillis()
+		print("Answer part 1: " + subQuestion1(lineList))
+		println("\t" + (System.currentTimeMillis() - s1) + " ms")
 
 		subQuestion2(mutableListOf(+1, -2, +3, +1)) `should equal` (2)
 		subQuestion2(mutableListOf(+1, -1)) `should equal` (0)
 		subQuestion2(mutableListOf(+3, +3, +4, -2, -4)) `should equal` (10)
 		subQuestion2(mutableListOf(-6, +3, +8, +5, -6)) `should equal` (5)
 		subQuestion2(mutableListOf(+7, +7, -2, -7, -4)) `should equal` (14)
-		println("Answer part 2: " + subQuestion2(lineList))
+		val s2 = System.currentTimeMillis()
+		print("Answer part 2: " + subQuestion2(lineList))
+		println("\t" + (System.currentTimeMillis() - s2) + " ms")
 		println()
 	}
 }
