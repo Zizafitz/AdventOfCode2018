@@ -90,7 +90,7 @@ class Day1: Day {
 	}
 
 	override fun show() {
-		println("December 1:")
+		println("1 December:")
 
 		val bufferedReader: BufferedReader = File("input/Day1.txt").bufferedReader()
 		val lineList = mutableListOf<Int>()
