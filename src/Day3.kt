@@ -79,7 +79,6 @@ class Day3: Day {
 			val h = matchResult!!.destructured.component5().toInt()
 			sheet?.let {
 				for (ay in y until (y+h) ) {
-					var array = arrayOf<Int>()
 					for (ax in x until (x+w)) {
 						sheet[ax][ay]++
 					}
@@ -109,7 +108,6 @@ class Day3: Day {
 			res = id
 			sheet?.let {
 				for (ay in y until (y+h) ) {
-					var array = arrayOf<Int>()
 					for (ax in x until (x+w)) {
 						if (sheet[ax][ay] > 1)
 							res = ""

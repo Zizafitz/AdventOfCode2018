@@ -60,61 +60,61 @@ What letters are common between the two correct box IDs? (In the example above, 
 character from either ID, producing fgij.)
  */
 class Day2: Day {
-	constructor() : super()
+    constructor() : super()
 
-	infix fun Any.`should equal`(expected: Any) = assertEquals(expected, this)
+    infix fun Any.`should equal`(expected: Any) = assertEquals(expected, this)
 
-	private fun subQuestion1(lineList: MutableList<String>): Int {
-		var twos = 0
-		var threes = 0
-		lineList.forEach {
-			var notfound2 = true
-			var notfound3 = true
-			for (i in 0 until it.length) {
-				var sum = it.filter { ch -> ch == it[i] }.count()
-				if (sum == 2 && notfound2) {
-					twos ++
-					notfound2 = false
-				}
-				if (sum == 3 && notfound3) {
-					threes++
-					notfound3 = false
-				}
-			}
-		}
-		return twos * threes
-	}
+    private fun subQuestion1(lineList: MutableList<String>): Int {
+        var twos = 0
+        var threes = 0
+        lineList.forEach {
+            var notfound2 = true
+            var notfound3 = true
+            for (i in 0 until it.length) {
+                var sum = it.filter { ch -> ch == it[i] }.count()
+                if (sum == 2 && notfound2) {
+                    twos ++
+                    notfound2 = false
+                }
+                if (sum == 3 && notfound3) {
+                    threes++
+                    notfound3 = false
+                }
+            }
+        }
+        return twos * threes
+    }
 
-	private fun subQuestion2(lineList: MutableList<String>): String {
-		val seen = mutableSetOf<Pair<String, String>>()
-		lineList.forEach() {
-			it.forEachIndexed { i, ch ->
-				var arr = Pair(it.substring(0,i), it.substring(i+1, it.length))
-				if (seen.contains(arr))
-					return arr.first + arr.second
-				seen.add(arr)
-			}
-		}
-		return ""
-	}
+    private fun subQuestion2(lineList: MutableList<String>): String {
+        val seen = mutableSetOf<Pair<String, String>>()
+        lineList.forEach() {
+            it.forEachIndexed { i, ch ->
+                var arr = Pair(it.substring(0,i), it.substring(i+1, it.length))
+                if (seen.contains(arr))
+                    return arr.first + arr.second
+                seen.add(arr)
+            }
+        }
+        return ""
+    }
 
-	override fun show() {
-		println("2 December:")
+    override fun show() {
+        println("2 December:")
 
-		val bufferedReader: BufferedReader = File("input/Day2.txt").bufferedReader()
-		val lineList = mutableListOf<String>()
-		bufferedReader.useLines { lines -> lines.forEach { lineList.add(it) } }
+        val bufferedReader: BufferedReader = File("input/Day2.txt").bufferedReader()
+        val lineList = mutableListOf<String>()
+        bufferedReader.useLines { lines -> lines.forEach { lineList.add(it) } }
 
-		subQuestion1(mutableListOf("abcdef", "bababc", "abbcde", "abcccd", "aabcdd", "abcdee", "ababab")) `should equal` (12)
-		val s1 = System.currentTimeMillis()
-		print("Answer part 1: " + subQuestion1(lineList))
-		println("\t" + (System.currentTimeMillis() - s1) + " ms")
+        subQuestion1(mutableListOf("abcdef", "bababc", "abbcde", "abcccd", "aabcdd", "abcdee", "ababab")) `should equal` (12)
+        val s1 = System.currentTimeMillis()
+        print("Answer part 1: " + subQuestion1(lineList))
+        println("\t" + (System.currentTimeMillis() - s1) + " ms")
 
-		subQuestion2(mutableListOf("abcde", "fghij", "klmno", "pqrst", "fguij", "axcye", "wvxyz")) `should equal` ("fgij")
-		val s2 = System.currentTimeMillis()
-		print("Answer part 2: " + subQuestion2(lineList))
-		println("\t" + (System.currentTimeMillis() - s2) + " ms")
-		println()
+        subQuestion2(mutableListOf("abcde", "fghij", "klmno", "pqrst", "fguij", "axcye", "wvxyz")) `should equal` ("fgij")
+        val s2 = System.currentTimeMillis()
+        print("Answer part 2: " + subQuestion2(lineList))
+        println("\t" + (System.currentTimeMillis() - s2) + " ms")
+        println()
 
-	}
+    }
 }

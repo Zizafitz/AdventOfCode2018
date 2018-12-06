@@ -91,15 +91,15 @@ class Day4(): Day() {
 	private fun subQuestion1(lineList: MutableList<String>): Int {
 		map.clear()
 		minMap.clear()
-		val regex = """\[(.*)\] (.*)""".toRegex()
+		val regex = """\[(.*)] (.*)""".toRegex()
 
 		var id = 0
 		var min = 0
 		lineList.forEach {
 			val matchResult = regex.find(it.trim())
-			var localDateTime = LocalDateTime.parse(matchResult!!.destructured.component1(),
+			val localDateTime = LocalDateTime.parse(matchResult!!.destructured.component1(),
 					DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
-			val x = matchResult!!.destructured.component2()
+			val x = matchResult.destructured.component2()
 			val guard = """Guard #(\d+) begins shift""".toRegex()
 			val sleep = """falls asleep""".toRegex()
 			val wakes = """wakes up""".toRegex()
